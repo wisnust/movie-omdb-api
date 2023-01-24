@@ -56,7 +56,7 @@ const SingleMovie = () => {
                 animate={{ opacity: 1, x: 0 }}
               >
                 <h4 className="mt-4max-w-lg mb-6 font-sans text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl sm:leading-none">{year}</h4>
-                {genreList.map((item) => (
+                {genreList?.map((item) => (
                   <p
                     className="inline-block px-4 py-1 mr-2 mb-4 text-xs font-semibold tracking-wider text-primary-900 uppercase rounded-full bg-white"
                     key={item}

@@ -20,7 +20,7 @@ const Movies = () => {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {movies.map((movie) => {
+          {movies?.map((movie) => {
             const {
               imdbID: id,
               Poster: poster,
