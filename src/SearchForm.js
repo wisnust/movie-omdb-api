@@ -1,8 +1,23 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { useGlobalContext } from "./context";
 import { motion } from "framer-motion";
 const SearchForm = () => {
   const { query, setQuery, error } = useGlobalContext();
+  const [inputValue, setInputValue] = useState(query)
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  
+  useEffect(() => {
+    let timeoutId = setTimeout(() => {
+      setQuery(inputValue);
+    }, 1000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
+
   return (
     <div className="relative">
       <div className="relative bg-gray-900 bg-opacity-80">
@@ -12,20 +27,20 @@ const SearchForm = () => {
             onSubmit={(e) => e.preventDefault()}
           >
             <motion.div
-              class="flex justify-center"
+              className="flex justify-center"
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
-              >
-              <div class="mb-3 xl:w-96">
+            >
+              <div className="mb-3 xl:w-96">
                 <label
-                  for="exampleSearch2"
-                  class="form-label inline-block mb-2 text-gray-200 text-center"
+                  htmlFor="search"
+                  className="form-label inline-block mb-2 text-gray-200 text-center"
                 >
                   Search Movie
                 </label>
                 <input
                   type="search"
-                  class="
+                  className="
               form-control
               block
               w-full
@@ -42,13 +57,15 @@ const SearchForm = () => {
               m-0
               focus:text-gray-700 focus:bg-gray-200 focus:border-blue-600 focus:outline-none
             "
-                  id="exampleSearch2"
+                  id="search"
                   placeholder="Type query"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  value={inputValue}
+                  onChange={handleChange}
                 />
                 {error.show && (
-                  <div className="error text-xs pt-2 text-gray-200">{error.msg}</div>
+                  <div className="error text-xs pt-2 text-gray-200">
+                    {error.msg}
+                  </div>
                 )}
               </div>
             </motion.div>

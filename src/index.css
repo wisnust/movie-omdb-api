@@ -65,7 +65,7 @@ Variables
   left: 0;
   right: 0;
   margin: auto;
-  top: 10rem;
+  top: 14rem;
 }
 body {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
