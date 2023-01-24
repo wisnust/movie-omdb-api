@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { API_ENDPOINT } from "./context";
 import useFetch from "./useFetch";
 import { motion } from "framer-motion";
 
@@ -26,7 +25,6 @@ const SingleMovie = () => {
     Title: title,
     Plot: plot,
     Year: year,
-    Type: type,
     Genre: genre,
   } = movie;
   const genreList = genre.split(", ");
@@ -57,6 +55,7 @@ const SingleMovie = () => {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
               >
+                <h4 className="mt-4max-w-lg mb-6 font-sans text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl sm:leading-none">{year}</h4>
                 {genreList.map((item) => (
                   <p
                     className="inline-block px-4 py-1 mr-2 mb-4 text-xs font-semibold tracking-wider text-primary-900 uppercase rounded-full bg-white"
