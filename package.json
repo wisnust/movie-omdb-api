@@ -6,17 +6,26 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^8.5.2",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "react-router-dom": "^6.2.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev:start": "react-scripts start",
+    "dev:css": "cross-env NODE_ENV=development postcss src/assets/tailwind.css -o src/assets/main.css  -w",
+    "dev": "run-p dev:*",
     "start": "react-scripts start",
-    "build": "CI= react-scripts build",
+    "build:css": "cross-env NODE_ENV=production postcss src/assets/tailwind.css -o src/assets/main.css",
+    "build:build": "react-scripts build",
+    "build": "run-s build:* ",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +41,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4"
   }
 }
